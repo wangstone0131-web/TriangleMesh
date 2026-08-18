@@ -20,7 +20,7 @@ class Object3D:
         vertexes = vertexes @ self.render.projection.projection_matrix
         vertexes /= vertexes[:,-1].reshape(-1,1)
         vertexes[(vertexes > 1) | (vertexes <-1)] = 0
-        vertexes = vertexes @ self.render.projection.to_screen_matrix()
+        vertexes = vertexes @ self.render.projection.to_screen_matrix
         vertexes = vertexes[:,:2]
 
         for face in self.faces:
@@ -30,7 +30,7 @@ class Object3D:
 
         for vertex in vertexes:
             if not np.any((vertex == self.render.H_WIDTH) | (vertex == self.render.H_HEIGHT)):
-                pg.draw.circle(self.render.screen, pg.Color('white'), vertexes, 6)
+                pg.draw.circle(self.render.screen, pg.Color('white'), vertex, 6)
 
     def translate(self,pos):
 
