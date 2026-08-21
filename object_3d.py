@@ -12,8 +12,15 @@ class Object3D:
 
         self.faces = np.array([(1,2,3,4),(4,5,6,7),(0,4,5,1),(2,3,7,6),(1,2,6,5),(0,3,7,4)])
 
+        self.font = pg.font.SysFont('Arial',30,bold=True)
+        self.co
+
     def draw(self):
         self.screen_projection()
+        self.movement()
+
+    def movement(self):
+        self.rotate_y(pg.time.get_ticks() % 0.005)
 
     def screen_projection(self):
         vertexes = self.vertexes @ self.render.camera.camera_matrix()
